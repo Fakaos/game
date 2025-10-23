@@ -46,6 +46,10 @@ class SocketClient {
       this.socket.on('nuke_impact', (data) => {
         this.emit('nuke_impact', data);
       });
+
+      this.socket.on('join_failed', (data) => {
+        this.emit('join_failed', data);
+      });
     });
   }
 
@@ -57,9 +61,9 @@ class SocketClient {
     this.callbacks.clear();
   }
 
-  joinGame(playerName: string): void {
+  joinGame(playerName: string, isSinglePlayer: boolean = false, numBots: number = 0, botDifficulties: string[] = []): void {
     if (this.socket) {
-      this.socket.emit('join_game', { playerName });
+      this.socket.emit('join_game', { playerName, isSinglePlayer, numBots, botDifficulties });
     }
   }
 

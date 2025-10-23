@@ -67,8 +67,31 @@ npm start      # Runs production server
 - **Combat**: Attack territories and launch nuclear strikes
 - **Alliances**: Form and break alliances with other players
 - **Real-time Multiplayer**: All players see updates instantly via WebSocket
+- **Single Player Mode**: Play against AI bots with configurable difficulty levels
+
+### Single Player Bot System
+The game includes an AI bot system with four difficulty levels:
+- **Easy**: Slow and passive, good for beginners
+- **Medium**: Balanced strategy and aggression
+- **Hard**: Aggressive and strategic, uses nukes and advanced tactics
+- **Peaceful**: Defensive only, attacks only when provoked by the player
+
+**Bot Behavior**:
+- Bots will attack other bots regardless of difficulty
+- Peaceful bots track who attacks them and only retaliate against those players
+- Bots make intelligent decisions about resource allocation, expansion, building, and combat
+- Higher difficulty bots use more advanced features like nuclear missiles and strategic alliances
+
+**Important**: Single-player and multiplayer modes are mutually exclusive. Single-player sessions require an empty server, and multiplayer joins are blocked during active single-player games.
 
 ## Recent Changes
+- 2025-10-23: Added single player mode with AI bots
+  - Implemented bot AI system with four difficulty levels (easy, medium, hard, peaceful)
+  - Added bot decision-making for territory expansion, resource allocation, building, combat, and nukes
+  - Created UI for game mode selection and bot configuration
+  - Implemented mutual exclusion between single-player and multiplayer to prevent session contamination
+  - Peaceful bots track attacks and only retaliate against aggressors
+  - Bots attack other bots regardless of difficulty level
 - 2025-10-23: Initial project import and setup for Replit environment
   - Configured for port 5000 with proper host settings (0.0.0.0)
   - Vite already configured with allowedHosts: true for Replit proxy
