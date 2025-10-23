@@ -364,6 +364,17 @@ export class GameStateManager {
     if (attacker.troops < troopCount) return false;
     if (targetTerritory.playerId === playerId) return false; // Can't attack own territory
 
+    // Track attacks for peaceful bot behavior
+    if (targetTerritory.playerId) {
+      const defender = this.gameState.players.get(targetTerritory.playerId);
+      if (defender) {
+        if (!defender.attackedBy) {
+          defender.attackedBy = new Set();
+        }
+        defender.attackedBy.add(playerId);
+      }
+    }
+
     // Calculate combat result
     let attackPower = troopCount;
     let defensePower = targetTerritory.troops;

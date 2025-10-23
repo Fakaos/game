@@ -35,6 +35,13 @@ export interface Building {
   cooldown: number;
 }
 
+export enum BotDifficulty {
+  EASY = 'easy',
+  MEDIUM = 'medium',
+  HARD = 'hard',
+  PEACEFUL = 'peaceful'
+}
+
 export interface Player {
   id: string;
   name: string;
@@ -48,6 +55,9 @@ export interface Player {
   buildings: Building[];
   alliances: string[];
   isEliminated: boolean;
+  isBot?: boolean;
+  botDifficulty?: BotDifficulty;
+  attackedBy?: Set<string>;
 }
 
 export interface Missile {
